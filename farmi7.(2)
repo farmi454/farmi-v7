@@ -32,4 +32,6 @@ int main() {
         printf("Слово \"%s\" найдено на позиции %d\n", word, position);
     } else {
         printf("Слово \"%s\" не найдено\n", word);
-    }
+}
+return 0;
+}
