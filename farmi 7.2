@@ -1,0 +1,47 @@
+Задача 2. Используйте улучшенную версию indexOf из теории 6 в качестве функции. Объявите функцию indexOf, которая должна принимать 2 параметра: 
+1. исходную строчку (массив из char),
+2. искомую строчку (массив из char), а возвращать индекс этого слова (int) или -1 (int) 
+повторите теоретический пример с нахождением слова "cat" в предложении, функцию indexOf нужно использовать в main.
+
+int indexOf(char text[], char word[]) {
+    int index = 0;
+
+    return index;
+}
+
+
+#include <stdio.h>
+
+int indexOf(char text[], char word[]) {
+    int i = 0, j = 0;
+
+    while (text[i] != '\0') {  // Ёще не конец строки
+        if (text[i] == word[j]) {  // Если символы совпадают
+            j++;
+            if (word[j] == '\0') {  // Если дошли до конца слова
+                return i - j + 1;   // Возвращаем начальный индекс
+            }
+        } else {  // Если символы не совпали
+            i -= j;  // Возвращаемся назад на длину пройденного слова
+            j = 0;    // Сбрасываем счетчик слова
+        }
+        i++;
+    }
+
+    return -1;  // Если слово не найдено
+}
+
+int main() {
+    char sentence[] = "The cat sat on the mat";
+    char word[] = "cat";
+
+    int position = indexOf(sentence, word);
+
+    if (position != -1) {
+        printf("Слово \"%s\" найдено на позиции %d\n", word, position);
+    } else {
+        printf("Слово \"%s\" не найдено\n", word);
+    }
+
+    return 0;
+}
